@@ -87,7 +87,6 @@ let y = canvas.height - ballRadius;
 let B = [];
 
 let vel = 0;
-let scroll = document.getElementById("scroll")
 document.getElementById("decreaseP").disabled = true
 
 document.getElementById("newBallA").addEventListener("click", function () {
@@ -126,7 +125,9 @@ document.getElementById("decreaseT").addEventListener("click", function () {
 });
 document.getElementById("increaseP").addEventListener("click", function () {
     document.getElementById("decreaseP").disabled = false;
-    piston += 50;
+    for (let i = 0; i<50;i++){
+        piston += 1;
+    }
     if (piston>=450){
         document.getElementById("increaseP").disabled = true;
     }
@@ -137,7 +138,9 @@ document.getElementById("increaseP").addEventListener("click", function () {
 
 document.getElementById("decreaseP").addEventListener("click", function () {
     document.getElementById("increaseP").disabled = false;
-    piston -= 50;
+    for (let i = 0; i<50;i++){
+        piston -= 1;
+    }
     if (piston<=0){
         document.getElementById("decreaseP").disabled = true;
     }
@@ -164,12 +167,19 @@ function draw() {
 
     for (let i = 0; i<B.length; i++){
 
-        if (B[i].pos.x + B[i].vel.x > canvas.width - ballRadius || B[i].pos.x + B[i].vel.x  < ballRadius) {
-            B[i].vel.x*=-1 ;B[i].orig_vel.x*=-1;
+        if (B[i].pos.x + B[i].vel.x > canvas.width - ballRadius) {
+            B[i].vel.x=-Math.abs(B[i].vel.x);B[i].orig_vel.x=-Math.abs(B[i].orig_vel.x);
         }
+        if (B[i].pos.x + B[i].vel.x  < ballRadius){
+            B[i].vel.x=Math.abs(B[i].vel.x);B[i].orig_vel.x=Math.abs(B[i].orig_vel.x);
+        }
+
         
-        if (B[i].pos.y + B[i].vel.y > canvas.height - ballRadius || B[i].pos.y + B[i].vel.y  < ballRadius+piston) {
-            B[i].vel.y*=-1 ;B[i].orig_vel.y*=-1;
+        if (B[i].pos.y + B[i].vel.y > canvas.height - ballRadius) {
+            B[i].vel.y=-Math.abs(B[i].vel.y);B[i].orig_vel.y=-Math.abs(B[i].orig_vel.y);
+        }
+        if (B[i].pos.y + B[i].vel.y  < ballRadius+piston) {
+            B[i].vel.y=Math.abs(B[i].vel.y);B[i].orig_vel.y=Math.abs(B[i].orig_vel.y);
         }
 
         B[i].pos.x += B[i].vel.x;
