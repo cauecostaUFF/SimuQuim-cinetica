@@ -219,7 +219,7 @@ function detecta_colisão(b1, b2){
         if (Math.random()>0.90-(vel/50) && ((b1.color=="blue" && b2.color=="green")|| (b1.color=="green" && b2.color=="blue"))){
             b1.status = false;
             b1.r = 0;
-            b2.color = "red";
+            b2.color = "orange";
             b2.r = 15;
         }
         return true;
