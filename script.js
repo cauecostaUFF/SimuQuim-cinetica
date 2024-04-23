@@ -97,6 +97,11 @@ document.getElementById("reset").addEventListener("click", function () {
     document.getElementById("decreaseT").disabled = false;
     document.getElementById("increaseP").disabled = false;
     document.getElementById("decreaseP").disabled = true;
+    document.getElementById("decreaseTFig").src= "Figuras/queda_temp.png"
+    document.getElementById("increaseTFig").src= "Figuras/aumento_temp.png"
+    document.getElementById("increasePFig").src= "Figuras/aumento_pressão.png"
+    document.getElementById("decreasePFig").src= "Figuras/queda_pressão(transp).png"
+    
 });
 
 // Aumentando a velocidade das esferas
@@ -105,6 +110,8 @@ document.getElementById("increaseT").addEventListener("click", function () {
     document.getElementById("decreaseTFig").src= "Figuras/queda_temp.png"
     if (vel<25){
        for (let i = 0;i<B.length;i++){
+            B[i].orig_vel.x = B[i].vel.x/(1+(vel-5)/25);
+            B[i].orig_vel.y = B[i].vel.y/(1+(vel-5)/25);
             B[i].changeVel(vel);
         }
     }else {
@@ -119,6 +126,8 @@ document.getElementById("decreaseT").addEventListener("click", function () {
     document.getElementById("increaseTFig").src= "Figuras/aumento_temp.png"
     if (vel>-20){
             for (let i = 0;i<B.length;i++){
+            B[i].orig_vel.x = B[i].vel.x/(1+(vel+5)/25);
+            B[i].orig_vel.y = B[i].vel.y/(1+(vel+5)/25);
             B[i].changeVel(vel);
         }
     } else {
@@ -216,7 +225,7 @@ function draw() {
 
 function detecta_colisão(b1, b2){
     if(b1.r + b2.r >= b2.pos.subtr(b1.pos).mag()){
-        if (Math.random()>0.90-(vel/50) && ((b1.color=="blue" && b2.color=="green")|| (b1.color=="green" && b2.color=="blue"))){
+        if (Math.random()>0.875-(vel/200) && ((b1.color=="blue" && b2.color=="green")|| (b1.color=="green" && b2.color=="blue"))){
             b1.status = false;
             b1.r = 0;
             b2.color = "orange";
