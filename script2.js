@@ -136,9 +136,9 @@ function draw() {
             B[i].pos.y=canvas.height - (ballRadius+200);
         }
         //Colisões com o topo
-        if (B[i].pos.y + B[i].vel.y  < (ballRadius+5)) {
+        if (B[i].pos.y + B[i].vel.y  < (ballRadius+30)) {
             B[i].vel.y=Math.abs(B[i].vel.y);B[i].orig_vel.y=Math.abs(B[i].orig_vel.y);
-            B[i].pos.y=piston+(ballRadius+5);
+            B[i].pos.y=piston+(ballRadius+30);
         }
 
         B[i].pos.x += B[i].vel.x;   
