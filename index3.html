@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimuQuim - Cinética Química</title>
+    <style>
+        canvas#myCanvas {
+            background: #eee;
+            display: block;
+        }
+        
+        button{
+            border: none;
+            cursor: pointer;
+            appearance: none;
+            background-color: inherit;
+            transition: transform .7s ease-in-out;
+        }
+        .all{
+            display: flex;
+        }
+        .buttons{
+            align-self: center;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <div class="all">
+        <div class="canvas"><canvas id="myCanvas" width="425" height="520"></canvas></div>
+        <div class="buttons">
+            
+            <div><button id="newBallA"><img id="fignewA" src="Figuras/aumento_concentração A.png" width="140" /></button></div>
+            <div><button id="newBallB"><img id="newBFig" src="Figuras/aumento_concentração B.png" width="140" /></button></div>
+            <div><button id="increaseT"><img id="increaseTFig" src="Figuras/aumento_temp.png" width="140" /></button></div>
+            <div><button id="decreaseT"><img id="decreaseTFig" src="Figuras/queda_temp.png" width="140" /></button></div>
+            <div><button id="increaseP"><img id="increasePFig" src="Figuras/aumento_pressão.png" width="140" /></button></div>
+            <div><button id="decreaseP"><img id="decreasePFig"src="Figuras/queda_pressão(transp).png" width="140"  /></button></div>
+            <div><button id="reset"><img src="Figuras/Reset.png" height="40" width="140"/></button></div>
+            <div><button id="quit"><img src="Figuras/Quit.png" height="40" width="40"/></button></div>
+        </div>
+        
+    </div>
+        
+    
+    
+    <script src = "script3.js"></script>
+</body>
+</html>
