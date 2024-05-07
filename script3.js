@@ -44,6 +44,7 @@ class Ball{
         this.orig_vel = new Vector(vx,vy)
         this.color = color;
         this.status = true;
+        this.mass = 20;
         if (this.status){
             this.drawBall()
         }
@@ -228,8 +229,10 @@ function detecta_colisão(b1, b2){
         if (Math.random()>0.875-(vel/200) && ((b1.color=="blue" && b2.color=="green")|| (b1.color=="green" && b2.color=="blue"))){
             b1.status = false;
             b1.r = 0;
+            b1.mass = 0;
             b2.color = "orange";
             b2.r = 15;
+            b2.mass = 40;
         }
         return true;
     
@@ -246,10 +249,10 @@ function resultante(b1, b2){
     b2.pos = b2.pos.add(pen_res.mult(-1));
     let velx = b1.vel.x;
     let vely = b1.vel.y;
-    b1.vel.x = (b1.r-b2.r)/(b1.r+b2.r)*b1.vel.x + (2*b2.r)/(b1.r+b2.r)*b2.vel.x;
-    b1.vel.y = (b1.r-b2.r)/(b1.r+b2.r)*b1.vel.y + (2*b2.r)/(b1.r+b2.r)*b2.vel.y;
-    b2.vel.x = (2*b1.r)/(b1.r+b2.r)*velx + (b2.r-b1.r)/(b1.r+b2.r)*b2.vel.x;
-    b2.vel.y = (2*b1.r)/(b1.r+b2.r)*vely + (b2.r-b1.r)/(b1.r+b2.r)*b2.vel.x;
+    b1.vel.x = (b1.mass-b2.mass)/(b1.mass+b2.mass)*b1.vel.x + (2*b2.mass)/(b1.mass+b2.mass)*b2.vel.x;
+    b1.vel.y = (b1.mass-b2.mass)/(b1.mass+b2.mass)*b1.vel.y + (2*b2.mass)/(b1.mass+b2.mass)*b2.vel.y;
+    b2.vel.x = (2*b1.mass)/(b1.mass+b2.mass)*velx + (b2.mass-b1.mass)/(b1.mass+b2.mass)*b2.vel.x;
+    b2.vel.y = (2*b1.mass)/(b1.mass+b2.mass)*vely + (b2.mass-b1.mass)/(b1.mass+b2.mass)*b2.vel.x;
 }
 
 function desenhandoFundo(){
