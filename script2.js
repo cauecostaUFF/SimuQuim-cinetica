@@ -173,7 +173,7 @@ function detecta_colisão(b1, b2){
         } else {
             path_graph = "Figuras/Gráfico2.png"
         }
-        
+        desenhandoGráfico();
         return true;
     
     } else {
