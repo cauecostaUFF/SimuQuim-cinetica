@@ -26,7 +26,7 @@
         padding: 30px;
         background-color: whitesmoke;
         border-radius: 10px;
-        width: 50%;
+        width: 100%;
         }
 
         .active {
@@ -93,8 +93,12 @@
     </style>
 </head>
 <body>
+    
     <div class="all">
-        <div class="canvas"><canvas id="myCanvas" width="720" height="520"></canvas></div>
+        <div class="canvas">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;">
+            <canvas id="myCanvas" width="720" height="520"></canvas>
+        </div>
     </div>
     <div class="modal-container">
         

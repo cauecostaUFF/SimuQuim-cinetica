@@ -121,9 +121,9 @@ function draw() {
 
     for (let i = 0; i<B.length; i++){
         //Colisões com as paredes
-        if (B[i].pos.x + B[i].vel.x > canvas.width - (ballRadius+15)) {
+        if (B[i].pos.x + B[i].vel.x > canvas.width - (ballRadius+30)) {
             B[i].vel.x=-Math.abs(B[i].vel.x);B[i].orig_vel.x=-Math.abs(B[i].orig_vel.x);
-            B[i].pos.x=canvas.width - (ballRadius+15);
+            B[i].pos.x=canvas.width - (ballRadius+30);
         }
         if (B[i].pos.x + B[i].vel.x  < (ballRadius+420)){
             B[i].vel.x=Math.abs(B[i].vel.x);B[i].orig_vel.x=Math.abs(B[i].orig_vel.x);
@@ -131,9 +131,9 @@ function draw() {
         }
 
         //Colisões com o fundo 
-        if (B[i].pos.y + B[i].vel.y > canvas.height - (ballRadius+200)) {
+        if (B[i].pos.y + B[i].vel.y > canvas.height - (ballRadius+225)) {
             B[i].vel.y=-Math.abs(B[i].vel.y);B[i].orig_vel.y=-Math.abs(B[i].orig_vel.y);
-            B[i].pos.y=canvas.height - (ballRadius+200);
+            B[i].pos.y=canvas.height - (ballRadius+225);
         }
         //Colisões com o topo
         if (B[i].pos.y + B[i].vel.y  < (ballRadius+30)) {
@@ -295,7 +295,8 @@ canvas.addEventListener('click', function(evt) {
         iniciar();
     } 
     if (isInside(mousePos, bangButton)&& isBangSelected==false){
-        B[1] = new Ball(420,290,10,8,-4,"yellow");
+        let fator = (1-Math.abs(altura-135/2)/135*2)*.5+.5
+        B[1] = new Ball(420,290,10,8*fator,-4*fator,"yellow");
         sinal = 0;
         path_botão = "Figuras/2.png"
         isBangSelected = true;
